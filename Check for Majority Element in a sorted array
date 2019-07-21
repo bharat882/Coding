@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+      int n;
+    scanf("%d",&n);
+    
+    int *arr=(int*)malloc(sizeof(int)*n);
+    for(int i=0;i<n;i++)
+    {
+            scanf("%d",&arr[i]);
+    
+    }
+    int p;
+    int flag=0;
+    scanf("%d",&p);
+    for(int i=0;i<n;i++)
+    {
+            if(arr[i]==p)
+            {
+            flag=i;
+            break;
+            }
+   }
+   if(arr[flag+n/2]==p)
+   printf("TRUE");
+   else
+   printf("False");
+    
+    
+}
