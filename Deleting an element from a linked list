@@ -1,0 +1,78 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+struct Node
+{
+    int data;
+    struct Node* next;
+};
+
+struct Node* head=NULL;
+
+void insert(int new_data)
+{
+    struct Node* new_node=(struct Node*)malloc(sizeof(struct Node));
+    new_node->data=new_data;
+    new_node->next=head;
+    head=new_node;
+}
+
+void display()
+{
+    struct Node* ptr;
+    ptr=head;
+    while(ptr!=NULL)
+    {
+        cout<<ptr->data<<" ";
+        ptr=ptr->next;
+    }
+}
+
+void del(int val)
+{
+    struct Node* curr;
+    struct Node* prev;
+    curr=head;
+    
+    
+     if(curr->data==val && curr!=NULL)
+    {
+        head=curr->next;
+        free(curr);
+        return;
+    }
+   
+    while(curr!=NULL && curr->data!=val)
+    {
+        prev=curr;
+        curr=curr->next;
+    }
+    
+    if(curr==NULL)
+    return;
+    prev->next=curr->next;
+    free(curr);
+   
+   
+   
+}
+
+int main()
+{
+    insert(20);
+    insert(30);
+    insert(40);
+    display();
+    cout<<endl;
+    del(30);
+    display();
+}
